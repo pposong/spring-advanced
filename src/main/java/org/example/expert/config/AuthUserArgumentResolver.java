@@ -5,6 +5,7 @@ import org.example.expert.domain.auth.exception.AuthException;
 import org.example.expert.domain.common.annotation.Auth;
 import org.example.expert.domain.common.dto.AuthUser;
 import org.example.expert.domain.user.enums.UserRole;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.support.WebDataBinderFactory;
