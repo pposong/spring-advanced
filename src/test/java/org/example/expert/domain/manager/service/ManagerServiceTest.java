@@ -57,6 +57,8 @@ class ManagerServiceTest {
         long managerUserId = 2L;
 
         Todo todo = new Todo();
+
+        // Todo Entity에 User nullable = false인데 user null인 경우를 테스트를 왜 하는지 의문이 들었다.
         ReflectionTestUtils.setField(todo, "user", null);
 
         ManagerSaveRequest managerSaveRequest = new ManagerSaveRequest(managerUserId);
