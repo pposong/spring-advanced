@@ -76,9 +76,13 @@ public class ManagerService {
     }
 
     @Transactional
-    public void deleteManager(long userId, long todoId, long managerId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new InvalidRequestException("User not found"));
+    public void deleteManager(AuthUser authUser, long todoId, long managerId) {
+
+        // @Auth로 요청이 들어왔다는 건 이미 JwtFilter를 통과 했다는 것
+        // Jwt유효 = 이미 로그인한 유저 = DB 존재 (존재하지 않는 유저는 애초에 Jwt토큰을 가질 수 없음)
+        // 즉 기존 코드처럼 유저가 없을 시 예외처리는 필요하지 않음
+
+        User user = User.fromAuthUser(authUser);
 
         Todo todo = todoRepository.findById(todoId)
                 .orElseThrow(() -> new InvalidRequestException("Todo not found"));
